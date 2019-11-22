@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        outline: 0;
+        box-sizing: border-box;
+
+        font-family: 'Roboto', Arial, Helvetica, sans-serif;
+      }
+
+      /** TOPBAR */
+      .topbar {
+        position: fixed;
+        background-color: #1e94d2;
+        min-height: 56px;
+        border-bottom: 1px solid #ccc;
+
+        top: 0;
+        right: 0;
+        left: 0;
+
+        display: flex;
+        justify-content: space-between;
+
+        z-index: 9999;
+      }
+
+      .topbar > h1 {
+        color: #fff;
+        line-height: 53px;
+        margin-left: 5px;
+      }
+
+      .topbar > .toggle {
+        line-height: 56px;
+        font-size: 1.5em;
+        color: #fff;
+        text-decoration: none;
+
+        margin-right: 15px;
+      }
+
+      @media (min-width: 960px) {
+        .toggle {
+          display: none;
+        }
+      }
+
+      /** SIDEBAR */
+      .sidebar {
+        position: fixed;
+        background-color: #f6f6f6;
+        width: 210px;
+        border-right: 1px solid #eaeaea;
+
+        top: 56px;
+        bottom: 0;
+        left: 0;
+
+        transition: 0.5s;
+
+        overflow-y: auto;
+
+        z-index: 9998;
+
+        margin-left: -211px;
+      }
+
+      .sidebar.active {
+        margin-left: 0px;
+      }
+
+      .menu {
+        font-size: 1.1em;
+      }
+
+      .menu > ul > li {
+        display: flex;
+        align-items: center;
+      }
+
+      .menu > ul a {
+        text-decoration: none;
+        display: block;
+        padding: 10px 15px;
+        color: #373737;
+      }
+
+      .menu > ul i {
+        margin-left: 10px;
+      }
+
+      .menu > ul li:hover,
+      .menu > ul li:focus {
+        background-color: #dfdfdf;
+      }
+
+      .menu > ul .is-selected {
+        border-right: 3px solid #1e94d2;
+        background-color: #f3f3f3;
+      }
+
+      .menu > ul .is-selected a {
+        color: #1e94d2;
+      }
+
+      @media (min-width: 960px) {
+        .sidebar {
+          margin-left: 0px;
+        }
+      }
+
+      /** CONTENT */
+      .content {
+        margin-top: 60px;
+        margin-left: 5px;
+
+        transition: 0.5s;
+      }
+
+      @media (min-width: 960px) {
+        .content {
+          margin-left: 220px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <h1><i>admin Template</i></h1>
+
+      <a href="" class="toggle">☰</a>
+    </header>
+
+    <aside class="sidebar">
+      <nav class="menu">
+        <ul>
+          <li class="is-selected">
+            <i class="material-icons md-18">dashboard</i
+            ><a href="">Dashboard</a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <i class="material-icons md-18">supervisor_account</i>
+            <a href="">Customers</a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <i class="material-icons md-18">file_copy</i><a href="">Reports</a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <i class="material-icons md-18">settings_applications</i
+            ><a href="">Settings</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <section class="content">
+      <h1>Content</h1>
+    </section>
+
+    <script>
+      (function() {
+        document.querySelector('.toggle').addEventListener('click', evt => {
+          evt.preventDefault();
+          document.querySelector('.sidebar').classList.toggle('active');
+        });
+      })();
+
+      (function() {
+        document.querySelectorAll('.menu > ul > li > a').forEach(el => {
+          el.addEventListener('click', evt => {
+            evt.preventDefault();
+
+            let tag = document.querySelectorAll('.menu > ul > li > a');
+            for (i = 0; i < tag.length; i++) {
+              tag[i].parentNode.classList.remove('is-selected');
+            }
+
+            el.parentNode.classList.add('is-selected');
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
