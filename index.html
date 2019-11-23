@@ -11,7 +11,7 @@
     <title>Document</title>
 
     <style>
-      @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+      @import url('https://fonts.googleapis.com/css?family=Roboto:500,700&display=swap');
 
       * {
         margin: 0;
@@ -20,6 +20,7 @@
         box-sizing: border-box;
 
         font-family: 'Roboto', Arial, Helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
       }
 
       /** TOPBAR */
@@ -97,11 +98,14 @@
         text-decoration: none;
         display: block;
         padding: 10px 15px;
-        color: #373737;
+        color: #5d6d7e;
+
+        font-size: 14px;
       }
 
       .menu > ul i {
-        margin-left: 10px;
+        margin-left: 35px;
+        color: #5d6d7e;
       }
 
       .menu > ul li:hover,
@@ -111,7 +115,7 @@
 
       .menu > ul .is-selected {
         border-right: 3px solid #1e94d2;
-        background-color: #f3f3f3;
+        background-color: #dfdfdf;
       }
 
       .menu > ul .is-selected a {
